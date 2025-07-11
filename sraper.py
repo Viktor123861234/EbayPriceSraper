@@ -51,10 +51,10 @@ def get_ebay_items(page=1):
         date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         results.append({
-            "Название": title,
-            "Цена": price,
-            "Ссылка": link,
-            "Дата сканирования": date
+            "Title": title,
+            "Price": price,
+            "Link": link,
+            "Scan date": date
         })
 
     return results
@@ -63,17 +63,17 @@ def main():
     all_results = []
 
     for page in range(1, MAX_PAGES + 1):
-        print(f"[INFO] Парсинг страницы {page}")
+        print(f"[INFO] Parsing a page {page}")
         try:
             items = get_ebay_items(page)
             all_results.extend(items)
         except Exception as e:
-            print(f"[ERROR] Ошибка на странице {page}: {e}")
+            print(f"[ERROR] Error on page {page}: {e}")
         time.sleep(random.uniform(DELAY_MIN, DELAY_MAX))
 
     df = pd.DataFrame(all_results)
     df.to_csv(OUTPUT_FILE, index=False, encoding="utf-8-sig")
-    print(f"[DONE] Сохранено {len(df)} товаров в {OUTPUT_FILE}")
+    print(f"[DONE] Saved {len(df)} items to {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
