@@ -1,0 +1,11 @@
+{
+  "base_url": "https://www.ebay.com",
+  "search_query": "laptop",
+  "max_pages": 3,
+  "delay_seconds_min": 1.5,
+  "delay_seconds_max": 3.0,
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+  "output_file": "ebay_prices.csv",
+  "filter_buy_it_now": false,
+  "filter_condition": null
+}
